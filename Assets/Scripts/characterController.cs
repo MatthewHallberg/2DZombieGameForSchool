@@ -21,6 +21,10 @@ public class characterController : MonoBehaviour {
 	public bool hasSaw;
 	public bool activeSaw;
 
+	public GameObject waveText;
+	public zombieCreator zombieCreatorScript;
+	private int waveCount;
+
 	// Use this for initialization
 	void Start () {
 
@@ -31,6 +35,8 @@ public class characterController : MonoBehaviour {
 
 		hasSpikes = false;
 		spikeCount = 0;
+
+		waveCount = 1;
 
 		hasSaw = false;
 		activeSaw = false;
@@ -52,10 +58,67 @@ public class characterController : MonoBehaviour {
 		Destroy (gameObject);
 
 	}
+
+	public void YouWin(){
+
+		largeText.transform.GetChild (0).gameObject.SetActive (true);
+		largeText.text = "You Win!!!!!";
+		//loop through all zombies and destroy
+		var zombies = GameObject.FindGameObjectsWithTag("enemy");
+		int zombieCount = zombies.Length;
+		foreach (GameObject zombie in zombies) {
+			Destroy (zombie);
+		}
+		//find zombie controller object and destroy so no more zombies are spawned
+		Destroy(GameObject.Find("zombies"));
+		//destroy the player
+		Destroy (gameObject);
+
+	}
+
+	public void NextWave(int currentWaveCount){
+
+		waveCount++;
+		//loop through all zombies and destroy
+		var zombies = GameObject.FindGameObjectsWithTag("enemy");
+		int zombieCount = zombies.Length;
+		foreach (GameObject zombie in zombies) {
+			Destroy (zombie);
+		}
+
+		waveText.GetComponent<Text> ().text = "wave " + waveCount;
+		waveText.SetActive (false);
+		waveText.SetActive (true);
+
+		zombieCreatorScript.frameDelta = zombieCreatorScript.frameDelta / 2;
+	}
+
+	void FixedUpdate(){
+
+		if (killCount == 10 && waveCount == 1) {
+
+			NextWave (waveCount);
+		}
+
+		if (killCount == 20 && waveCount == 2) {
+
+			NextWave (waveCount);
+		}
+
+		if (killCount == 70 && waveCount == 3) {
+
+			YouWin ();
+		}
+
+		if (escaped == 5) {
+
+			GameOver ();
+		}
+	}
 	
 	// Update is called once per frame
 	void Update () {
-		
+
 		var move = new Vector3(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"), 0);
 		transform.position += move * speed * Time.deltaTime;
 

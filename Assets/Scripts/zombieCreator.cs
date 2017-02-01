@@ -13,7 +13,7 @@ public class zombieCreator : MonoBehaviour {
 	void Start () {
 
 		counter = 1;
-		frameDelta = 50;
+		frameDelta = 100;
 	}
 	
 	// Update is called once per frame
