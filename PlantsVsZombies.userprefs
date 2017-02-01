@@ -1,0 +1,18 @@
+﻿<Properties StartupItem="Assembly-CSharp.csproj">
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="Unity.Instance.Unity Editor" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/uiSpike.cs">
+    <Files>
+      <File FileName="Assets/Scripts/spikeController.cs" Line="25" Column="40" />
+      <File FileName="Assets/Scripts/characterController.cs" Line="30" Column="45" />
+      <File FileName="Assets/Scripts/uiSaw.cs" Line="25" Column="34" />
+      <File FileName="Assets/Scripts/sawController.cs" Line="33" Column="55" />
+      <File FileName="Assets/Scripts/zombieCreator.cs" Line="16" Column="18" />
+      <File FileName="Assets/Scripts/zombieBehavior.cs" Line="15" Column="15" />
+      <File FileName="Assets/Scripts/uiSpike.cs" Line="38" Column="98" />
+    </Files>
+  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore />
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+</Properties>
